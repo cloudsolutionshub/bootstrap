@@ -29,7 +29,7 @@ options[:packages].each do |pack|
   end
 end
 #install chef
-output, error, status = Open3.capture3("curl -L https://omnitruck.chef.io/install.sh | sudo bash")
+output, error, status = Open3.capture3("curl -L https://omnitruck.chef.io/install.sh | bash")
 if status == 0
   puts output
   puts "Chef Installed"
