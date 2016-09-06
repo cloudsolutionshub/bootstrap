@@ -34,6 +34,12 @@ output, error, status = Open3.capture3("curl -L https://omnitruck.chef.io/instal
 if status == 0
   puts output
   puts "Chef Installed"
+  o,e,s = Open3.capture3('sudo chef-client')
+  if s == 0 and !e
+    puts "Client connected and registered with chef server."
+  else
+    STDERR.puts e
+  end
 else
   STDERR.puts "Chef Installation failed:"
   STDERR.puts error
