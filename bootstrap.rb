@@ -39,6 +39,7 @@ if status == 0
     puts o
     puts "Client connected and registered with chef server."
   else
+    STDERR.puts "Outut: #{o}.\nError: #{e}.\nStatus: #{s}"
     STDERR.puts e
   end
 else
