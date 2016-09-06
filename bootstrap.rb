@@ -29,13 +29,14 @@ options[:packages].each do |pack|
   end
 end
 #install chef
-#FIXME: Mention chef version to be isntalled. Very important.
+#FIXME: Mention chef version to be installed. Very important.
 output, error, status = Open3.capture3("curl -L https://omnitruck.chef.io/install.sh | bash")
 if status == 0
   puts output
   puts "Chef Installed"
   o,e,s = Open3.capture3('chef-client')
-  if s == 0 and !e
+  if s == 0
+    puts o
     puts "Client connected and registered with chef server."
   else
     STDERR.puts e
